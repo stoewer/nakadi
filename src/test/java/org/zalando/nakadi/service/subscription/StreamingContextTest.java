@@ -1,5 +1,7 @@
 package org.zalando.nakadi.service.subscription;
 
+import org.echocat.jomon.runtime.concurrent.RetryForSpecifiedTimeStrategy;
+import org.echocat.jomon.runtime.concurrent.Retryer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -149,8 +151,13 @@ public class StreamingContextTest {
 
         ctxSpy.onNodeShutdown();
 
-        Mockito.verify(ctxSpy).switchState(Mockito.isA(CleanupState.class));
-        Mockito.verify(ctxSpy).unregisterSession();
-        Mockito.verify(ctxSpy).switchState(Mockito.isA(DummyState.class));
+        Retryer.executeWithRetry(() -> {
+                    Mockito.verify(ctxSpy).switchState(Mockito.isA(CleanupState.class));
+                    Mockito.verify(ctxSpy).unregisterSession();
+                    Mockito.verify(ctxSpy).switchState(Mockito.isA(DummyState.class));
+                },
+                new RetryForSpecifiedTimeStrategy<Void>(3000)
+                        .withExceptionsThatForceRetry(AssertionError.class)
+                        .withWaitBetweenEachTry(500));
     }
 }
