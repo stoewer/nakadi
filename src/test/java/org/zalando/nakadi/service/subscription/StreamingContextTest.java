@@ -151,6 +151,8 @@ public class StreamingContextTest {
         t.start();
         t.join(1000);
 
+        Thread.sleep(1000);
+
         Mockito.verify(ctxSpy).switchState(Mockito.isA(CleanupState.class));
         Mockito.verify(ctxSpy).unregisterSession();
         Mockito.verify(ctxSpy).switchState(Mockito.isA(DummyState.class));
