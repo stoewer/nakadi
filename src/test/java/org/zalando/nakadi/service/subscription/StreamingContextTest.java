@@ -1,7 +1,5 @@
 package org.zalando.nakadi.service.subscription;
 
-import org.echocat.jomon.runtime.concurrent.RetryForSpecifiedTimeStrategy;
-import org.echocat.jomon.runtime.concurrent.Retryer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -136,7 +134,7 @@ public class StreamingContextTest {
     public void testOnNodeShutdown() throws Exception {
         final StreamingContext ctxSpy = Mockito.spy(createTestContext(null));
 
-        final Thread t = new Thread(() -> {
+        Thread t = new Thread(() -> {
             try {
                 ctxSpy.streamInternal(new State() {
                     @Override
@@ -147,17 +145,14 @@ public class StreamingContextTest {
             }
         });
         t.start();
-        t.join(2000);
+        t.join(1000);
 
-        ctxSpy.onNodeShutdown();
+        t = new Thread(() -> ctxSpy.onNodeShutdown());
+        t.start();
+        t.join(1000);
 
-        Retryer.executeWithRetry(() -> {
-                    Mockito.verify(ctxSpy).switchState(Mockito.isA(CleanupState.class));
-                    Mockito.verify(ctxSpy).unregisterSession();
-                    Mockito.verify(ctxSpy).switchState(Mockito.isA(DummyState.class));
-                },
-                new RetryForSpecifiedTimeStrategy<Void>(3000)
-                        .withExceptionsThatForceRetry(AssertionError.class)
-                        .withWaitBetweenEachTry(500));
+        Mockito.verify(ctxSpy).switchState(Mockito.isA(CleanupState.class));
+        Mockito.verify(ctxSpy).unregisterSession();
+        Mockito.verify(ctxSpy).switchState(Mockito.isA(DummyState.class));
     }
 }
