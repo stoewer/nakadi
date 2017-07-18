@@ -6,7 +6,7 @@ The goal of Nakadi (ნაკადი means "stream" in Georgian) is to provide
 
 #### RESTfull 
 
-Abstract event delivery via a secured [RESTful API](api/nakadi-event-bus-api.yaml). This allows microservices teams to maintain service boundaries, and not directly depend on any specific message broker technology. Access to the API can be managed and secured using OAuth scopes.
+Abstract event delivery via a secured [RESTful API](./manual/api-spec-generated/paths). This allows microservices teams to maintain service boundaries, and not directly depend on any specific message broker technology. Access to the API can be managed and secured using OAuth scopes.
 
 #### JSON Schema
 
@@ -24,7 +24,7 @@ Nakadi instances are stateless. They can be run on AWS with auto-scaling.
 
 Using Timelines it is easy to move the traffic to another cluster without moving the data and any service degradation. 
 
-Read more in [Nakadi manual](manual)
+Read more in [Nakadi manual](./manual)
 
 ## Examples
 
