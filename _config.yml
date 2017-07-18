@@ -1,1 +1,17 @@
-theme: jekyll-theme-cayman
+title: Swagger API Doku
+baseurl: ""
+url: ""
+
+collections:
+  - documentation
+  - api
+
+# Build settings
+markdown: kramdown
+gems:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
+sass:
+  style: compressed
