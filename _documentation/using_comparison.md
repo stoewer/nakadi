@@ -1,3 +1,8 @@
+---
+title: Comparison to Other Systems
+position: 11
+---
+
 ## Comparison to Other Systems
 
 In this section, we'll look at how Nakadi fits in with the stream broker/processing ecosystems. Notably we'll compare it to Apache Kafka, as that's a common question, but also look briefly at some of the main cloud offerings in this area.

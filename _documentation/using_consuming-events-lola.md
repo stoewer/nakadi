@@ -1,3 +1,8 @@
+---
+title: Low-level API
+position: 8
+---
+
 ## Consuming Events with the Low-level API
 
 ### Connecting to a Stream

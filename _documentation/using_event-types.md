@@ -1,3 +1,8 @@
+---
+title: Event Types
+position: 5
+---
+
 ## Event Types
 
 The object containing the information describing an event is called an

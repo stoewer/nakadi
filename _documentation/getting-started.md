@@ -1,3 +1,8 @@
+---
+title: Getting Started
+position: 2
+---
+
 # Getting Started
 
 In this section we'll walk through running a Nakadi service on your machine.

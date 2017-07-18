@@ -1,3 +1,8 @@
+---
+title: Subscriptions
+position: 9
+---
+
 ## Consuming events with the High-level API (Subscriptions)
 
 Subscriptions (also knows as the high-level API) allow clients to consume events, where the Nakadi server store offsets and 

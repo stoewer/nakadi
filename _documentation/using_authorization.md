@@ -1,3 +1,8 @@
+---
+title: Authorization
+position: 6
+---
+
 ## Per-resource authorization
 
 Nakadi allows users to restrict access to resources they own - currently, event types are the only resources supported, 

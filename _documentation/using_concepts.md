@@ -1,3 +1,8 @@
+---
+title: Nakadi Concepts
+position: 4
+---
+
 ## Nakadi Concepts
 
 The Nakadi API allows the publishing and consuming of _events_ over HTTP. 

@@ -1,3 +1,7 @@
+---
+title: Getting Started
+position: 14
+---
 
 # Frequently Asked Questions
 

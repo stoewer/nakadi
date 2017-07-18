@@ -1,3 +1,7 @@
+---
+title: Producing Events
+position: 7
+---
 
 ## Producing Events
 

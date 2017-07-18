@@ -1,3 +1,8 @@
+---
+title: Clients
+position: 10
+---
+
 ## Clients
 
 Nakadi does not ship with a client, but there are some open source clients available that you can try:
