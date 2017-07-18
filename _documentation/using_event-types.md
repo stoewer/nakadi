@@ -202,7 +202,7 @@ An event type's stream is divided into one or more _partitions_ and each event i
 
 Each partition is a fully ordered log, and there is no global ordering across partitions. Clients can consume a stream's partitions independently and track their position across the stream.
 
-![/images/partitions.png](/docs/images/partitions.png)
+![/img/partitions.png](./img/partitions.png)
 
 Dividing a stream this way allows the overall system to be scaled and provide
 good throughput for producers and consumers. It's similar to how systems such as [Apache Kafka](http://kafka.apache.org/documentation.html#intro_topics) and AWS Kinesis work.

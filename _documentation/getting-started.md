@@ -71,4 +71,4 @@ docker-machine ssh default \
 Alternatively you can set up port forwarding on the "default" machine through
 its network settings in the VirtualBox UI, which look like this -
 
-![vbox](./images/vbox.png)
+![vbox](./img/vbox.png)
