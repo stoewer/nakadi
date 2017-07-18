@@ -24,7 +24,7 @@ Nakadi instances are stateless. They can be run on AWS with auto-scaling.
 
 Using Timelines it is easy to move the traffic to another cluster without moving the data and any service degradation. 
 
-Read more in [Nakadi manual](./manual)
+Read more in [Nakadi manual](./manual/)
 
 ## Examples
 
