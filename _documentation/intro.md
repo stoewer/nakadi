@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Intro
 position: 1
 ---
 
