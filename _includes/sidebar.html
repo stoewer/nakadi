@@ -29,10 +29,10 @@
 
         <!-- Navigation for swagger yml files in _data -->
         <li class="first-level">
-            <span class="title">Api</span>
+            <span class="title">Methods</span>
         {% for data in allData %}
-            {% assign singleData = data[1]| sort %}
-            {% for path in singleData.paths %}
+            {% assign singleData = data[1].paths | sort %}
+            {% for path in singleData %}
                 <ul class="path">
                     {% for method in path[1] %}
                         <li>
@@ -43,6 +43,24 @@
                             </a>
                         </li>
                     {% endfor %}
+                </ul>
+            {% endfor %}
+        {% endfor %}
+        </li>
+
+    <li class="first-level">
+            <span class="title">Definitions</span>
+        {% for data in allData %}
+            {% assign singleData = data[1].definitions | sort %}
+            {% for definition in singleData %}
+                <ul class="path">
+                        <li>
+                            <a href="#definition_{{definition[0] }}">
+                                <span class="definition">
+                                    {{ definition[0] }}
+                                </span>
+                            </a>
+                        </li>
                 </ul>
             {% endfor %}
         {% endfor %}
