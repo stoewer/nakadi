@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: F.A.Q
 position: 14
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Nakadi Event Bus API Definition
+title: API
 position: 3
 ---
 

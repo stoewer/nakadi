@@ -1,5 +1,5 @@
 ---
-title: Recipes and Patterns
+title: Recipes
 position: 12
 ---
 

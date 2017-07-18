@@ -31,7 +31,7 @@
         <li class="first-level">
             <span class="title">Api</span>
         {% for data in allData %}
-            {% assign singleData = data[1] %}
+            {% assign singleData = data[1]| sort %}
             {% for path in singleData.paths %}
                 <ul class="path">
                     {% for method in path[1] %}

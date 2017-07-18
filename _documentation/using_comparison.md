@@ -1,5 +1,5 @@
 ---
-title: Comparison to Other Systems
+title: Comparison
 position: 11
 ---
 

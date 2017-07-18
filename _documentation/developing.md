@@ -49,3 +49,4 @@ For working with an IDE, the `./gradlew eclipse` IDE task is available and you'l
 ![idea](./img/idea.png)
 
 
+{{ site.data | jsonify }}
