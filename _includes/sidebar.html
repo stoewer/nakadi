@@ -1,0 +1,51 @@
+<div class="sidebar">
+    <div class="site-name">
+        <H1>{{ site.title }}</H1>
+    </div>
+
+    {% assign allData = site.data %}
+
+    <ul class="navigation">
+
+        <!-- Navigation _documentation -->
+        <li class="first-level">
+            <span class="title">General</span>
+        {% assign sorted_collections = site.collections | sort: "position" %}
+        {% for collection in sorted_collections %}
+            <ul>
+                {% assign sorted_docs = collection.docs | sort: "position" %}
+                {% for doc in sorted_docs %}
+                    {% if doc.collection == "documentation" %}
+                        <li>
+                            <a href="#{{ doc.slug }}">
+                                {{ doc.title }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endfor %}
+        </li>
+
+        <!-- Navigation for swagger yml files in _data -->
+        <li class="first-level">
+            <span class="title">Api</span>
+        {% for data in allData %}
+            {% assign singleData = data[1] %}
+            {% for path in singleData.paths %}
+                <ul class="path">
+                    {% for method in path[1] %}
+                        <li>
+                            <a href="#{{ path[0] }}_{{ method[0] }}">
+                                <span class="method-{{ method[0] }}" data-after="{{ method[0] }}">
+                                    {{ path[0] }}
+                                </span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        {% endfor %}
+        </li>
+    </ul>
+</div>

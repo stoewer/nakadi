@@ -1,0 +1,187 @@
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /fruits:
+    get:
+      summary: List all fruits
+      responses:
+        200:
+          description: An array of fruits
+          examples:
+            application/json: >
+                {
+                    "fruits": [
+                        {
+                            "id": 1,
+                            "name": "Cherry",
+                            "price": 6.30,
+                            "description": "Lovely red cherries",
+                            "origin": [
+                                "france"
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "name": "Peach",
+                            "price": 4.10,
+                            "origin": [
+                                "spain",
+                                "italy"
+                            ]
+                        }
+                    ]
+                }
+    post:
+      summary: Add a fruit
+      parameters:
+        - name: name
+          in: body
+          description: fruit's name
+          required: true
+        - name: price
+          in: body
+          type: float
+          description: per kilogram fruit's price
+          required: true
+        - name: description
+          in: body
+          description: product's description
+        - name: origin
+          in: body
+          description: product's origin
+          type: array
+          items:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Product details
+          examples:
+            application/json: >
+                {
+                    "id": 1,
+                    "name": "Cherry",
+                    "price": 6.30,
+                    "description": "Lovely red cherries",
+                    "origin": [
+                        "france"
+                    ]
+                }
+        401:
+            description: Invalid data
+            examples:
+                application/json: >
+                    {
+                        "error": "Missing key `price`."
+                    }
+        403:
+          description: Insufficient right to add a fruit
+  /fruits/{id}:
+    get:
+      summary: Fetch a fruit
+      responses:
+        200:
+          description: Fruit details
+          examples:
+            application/json: >
+                {
+                    "id": 1,
+                    "name": "Cherry",
+                    "price": 6.30,
+                    "description": "Lovely red cherries",
+                    "origin": [
+                        "france"
+                    ]
+                }
+        404:
+            description: Invalid fruit ID
+    put:
+      summary: Update a fruit
+      parameters:
+        - name: name
+          in: body
+          description: fruit's name
+          required: true
+        - name: price
+          in: body
+          type: float
+          description: per kilogram fruit's price
+          required: true
+        - name: description
+          in: body
+          description: product's description
+        - name: origin
+          in: body
+          description: product's origin
+          type: array
+          items:
+            type: string
+          required: true
+      responses:
+        200:
+          description: Product details
+          examples:
+            application/json: >
+                {
+                    "id": 1,
+                    "name": "Cherry",
+                    "price": 6.30,
+                    "description": "Lovely red cherries",
+                    "origin": [
+                        "france"
+                    ]
+                }
+        401:
+          description: Invalid data
+          examples:
+            application/json: >
+                {
+                    "error": "Price must be a float."
+                }
+    patch:
+      summary: Partially update a fruit
+      parameters:
+        - name: name
+          in: body
+          description: fruit's name
+        - name: price
+          in: body
+          type: float
+          description: per kilogram fruit's price
+        - name: description
+          in: body
+          description: product's description
+        - name: origin
+          in: body
+          description: product's origin
+          type: array
+          items:
+            type: string
+      responses:
+        200:
+          description: Product details
+          examples:
+            application/json: >
+                {
+                    "id": 1,
+                    "name": "Cherry",
+                    "price": 6.30,
+                    "description": "Lovely red cherries",
+                    "origin": [
+                        "france"
+                    ]
+                }
+        401:
+          description: Invalid data
+          examples:
+            application/json: >
+                {
+                    "error": "Price must be a float."
+                }
+    delete:
+        summary: Delete a fruit
+        responses:
+            204:
+              description: Product removed

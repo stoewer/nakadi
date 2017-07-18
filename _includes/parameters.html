@@ -1,0 +1,41 @@
+{% assign parameters = include.data %}
+
+{% if parameters %}
+<table class="parameters">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Located in</th>
+        <th>Description</th>
+        <th>Type</th>
+    <tr>
+    </thead>
+    <tbody>
+    {% for parameter in parameters %}
+    <tr>
+        <td>
+            {% if parameter.required %}
+            <span class="required">
+                                {% endif %}
+                                {{ parameter.name }}
+                                {% if parameter.required %}
+                                </span>
+            {% endif %}
+        </td>
+        <td>{{ parameter.in }}</td>
+        <td>{{ parameter.description }}</td>
+        <td>
+            {% if parameter.type %}
+            {{ parameter.type | capitalize }}
+            {% if parameter.items %}
+            of {{ parameter.items.type | capitalize }}
+            {% endif %}
+            {% else %}
+            String
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}

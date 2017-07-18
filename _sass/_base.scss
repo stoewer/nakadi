@@ -1,0 +1,19 @@
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-family: $font-default;
+  font-size: $font-size;
+  color: $color-font;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.wrapper {
+  padding-left: $sidebar-width;
+
+  @include respond-to('small') {
+    padding-left: 0;
+  }
+}

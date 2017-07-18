@@ -1,0 +1,57 @@
+.doc {
+  display: flex;
+
+  @include respond-to('medium') {
+    display: block;;
+  }
+
+  .info {
+    padding: $content-padding;
+  }
+
+  .info {
+    width: 60%;
+    line-height: 1.5;
+    border-bottom: 1px solid darken($color-lightgray, 5%);
+
+    @include respond-to('medium') {
+      width: 100%;
+    }
+
+    .highlighter-rouge {
+      font-family: "Courier", sans-serif;
+      padding: .3rem;
+      background-color: rgba(0,0,0,0.04);
+      border-radius: 3px;
+      color: $color-primary;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+
+    span:after {
+      font-size: 1.25rem;
+    }
+  }
+
+  .summary {
+    color: darken($color-lightgray, 50%);
+    margin-bottom: 1.5rem;
+  }
+
+  .additional-info {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.doc-full {
+  .info {
+    width: 100%;
+  }
+}
