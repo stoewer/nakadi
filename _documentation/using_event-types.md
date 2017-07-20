@@ -131,7 +131,7 @@ all.
 Consumers reading events from forward compatible event types SHOULD
 ignore event attributes not declared in the event type schema. This is
 aligned with
-[API guidelines for compatibility](http://zalando.github.io/restful-api-guidelines/compatibility/Compatibility.html).
+[API guidelines for compatibility](https://zalando.github.io/restful-api-guidelines/compatibility/Compatibility.html).
 
 #### Incompatible
 
@@ -160,7 +160,7 @@ An event type can be created by posting to the `/event-types` resource.
 This example shows a `business` category event type called `order_received`:
 
 ```sh
-curl -v -XPOST -H "Content-Type: application/json" http://localhost:8080/event-types -d '{
+curl -v -XPOST -H "Content-Type: application/json" https://localhost:8080/event-types -d '{
   "name": "order_received",
   "owning_application": "acme-order-service",
   "category": "business",
@@ -192,7 +192,7 @@ A successful request will result in a `201 Created` response.
 Once an event type is created, it is added to the _event type registry_ and its details are visible from its URI in the registry. Events can then be posted to its stream and consumed by multiple clients.
 
 The exact required fields depend on the event type's category, but `name`, `owning_application` and `schema` are always expected. The
-["API Reference"](../api-spec-generated/overview.html) contains more details on event types.
+["API Reference"](#nakadi-event-bus-api) contains more details on event types.
 
 ### Partitions
 
@@ -205,7 +205,7 @@ Each partition is a fully ordered log, and there is no global ordering across pa
 ![/img/partitions.png](./img/partitions.png)
 
 Dividing a stream this way allows the overall system to be scaled and provide
-good throughput for producers and consumers. It's similar to how systems such as [Apache Kafka](http://kafka.apache.org/documentation.html#intro_topics) and AWS Kinesis work.
+good throughput for producers and consumers. It's similar to how systems such as [Apache Kafka](https://kafka.apache.org/documentation.html#intro_topics) and AWS Kinesis work.
 
 #### Partition Strategies
 

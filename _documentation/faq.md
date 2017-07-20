@@ -53,19 +53,19 @@ If you want to change the default for a server installation, you can set the `pa
 
 #### Which partitioning strategy should I use?
 
-See the section ["Partition Strategies"](./using/event-types.html#partition-strategies), which goes into more detail on the available options and what they're good for.
+See the section ["Partition Strategies"](#partition-strategies), which goes into more detail on the available options and what they're good for.
 
 #### How can I keep track of a position in a stream?
 
-Clients can track offset information sent in the Cursor on a per-partition basis - each batch of events sent to a consumer will contain such a Cursor that will detail the partition id and an offset (see ["Cursors and Offsets"](./using/consuming-events.html#cursors-and-offsets) for more information). This allows a client to track how far in the partition they have consumed events, and also allows them to submit a cursor with an appropriate value as described in the "Cursors and Offsets" section. One approach would be to use local storage (eg a datastore like PostgreSQL or DynamoDB) to record the position to date outside the client application, making it available in the event of restarts.
+Clients can track offset information sent in the Cursor on a per-partition basis - each batch of events sent to a consumer will contain such a Cursor that will detail the partition id and an offset (see ["Cursors and Offsets"](#cursors-and-offsets) for more information). This allows a client to track how far in the partition they have consumed events, and also allows them to submit a cursor with an appropriate value as described in the "Cursors and Offsets" section. One approach would be to use local storage (eg a datastore like PostgreSQL or DynamoDB) to record the position to date outside the client application, making it available in the event of restarts.
 
 Note that a managed API is being developed which will supporting storing offsets for consumer clients in the future.
 
 #### What's an effective schema?
 
-The effective schema is the combination of the schema structure defined for a particular [category](./using/event-types.html#event-types-and-categories), such as 'business' or 'data' and the custom schema submitted when creating an event type. When an event is posted to Nakadi, the effective schema is used to validate the event and not the separate category level and custom level schemas. 
+The effective schema is the combination of the schema structure defined for a particular [category](#event-types-and-categories), such as 'business' or 'data' and the custom schema submitted when creating an event type. When an event is posted to Nakadi, the effective schema is used to validate the event and not the separate category level and custom level schemas. 
 
-You can read more in the section ["Effective Schema"](./using/event-types.html). 
+You can read more in the section ["Effective Schema"](#event-types). 
 
 #### Nakadi isn't validating metadata and/or event identifiers, what's going on?
 
@@ -73,7 +73,7 @@ It's possible you are working with an 'undefined' event type. The 'undefined' ca
 
 #### What clients are available?
 
-The project doesn't ship with a client, but there are a number of open source clients described in the ["Clients"](./using/clients.html) section.
+The project doesn't ship with a client, but there are a number of open source clients described in the ["Clients"](#using_clients) section.
 
 If you have an open source client not listed there, we'd love to hear from you :) Let us know via GitHub and we'll add it to the list.
 

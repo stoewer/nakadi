@@ -24,10 +24,3 @@ Every path in the swagger specification below `_data` is a single navigation lin
 
 ## Theming
 All colors, sizes, fonts, and even breakpoints are completely customizable via scss. The config is available in `_sass/_config/`
-
-## Roadmap
-- [ ] Changelog page (using posts)
-- [ ] Full responsive
-
-### Missing some Features?
-Feel free to open an issue or create a pull request. :raised_hands:

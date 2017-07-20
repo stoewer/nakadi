@@ -14,7 +14,7 @@ The URI for a stream is a nested resource and based on the event type's name - f
 This example posts two events to the `order_received` stream:
 
 ```sh
-curl -v -XPOST -H "Content-Type: application/json" http://localhost:8080/event-types/order_received/events -d '[
+curl -v -XPOST -H "Content-Type: application/json" https://localhost:8080/event-types/order_received/events -d '[
   {
     "order_number": "24873243241",
     "metadata": {
@@ -37,7 +37,7 @@ As shown above, the event stream accepts an array of events.
 
 ### Validation Strategies and Effective Schema
 
-Each event sent to the stream will be validated relative to the [effective schema](./event-types.html#effective-schema) for the event type's category.
+Each event sent to the stream will be validated relative to the [effective schema](#effective-schema) for the event type's category.
 
 The validation behavior and the effective schema varies based on the event type's category. For example, because the example above is a 'business' category event type, as well as the fields defined in the event type's original schema, the events must also contain a `metadata` object with an `eid` and `occurred_at` fields in order to conform to the standard structure for that category.
 

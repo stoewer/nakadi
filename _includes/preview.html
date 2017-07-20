@@ -5,23 +5,25 @@
             <li class="tab__link" data-href="tab-{{ res[0] }}">
                 {{ res[0] }}
             </li>
-            {% endfor  %}
+            {% endfor %}
         </ul>
         {% for res in method[1].responses %}
         <div class="tab__content" data-id="tab-{{ res[0] }}">
             <div class="tab__description">
-                {{ res[1].description }}
+                {% assign type = res[1] %}
+
+                {% include type.html type=type %}
             </div>
 
-{% for example in res[1].examples %}
-<pre>
-<code>
-{{ example[1] | strip }}
-</code>
-</pre>
-{% endfor  %}
+            {% for example in res[1].examples %}
+            <pre>
+                <code>
+                {{ example[1] | strip }}
+                </code>
+            </pre>
+            {% endfor %}
         </div>
-        {% endfor  %}
+        {% endfor %}
     </div>
 </div>
 

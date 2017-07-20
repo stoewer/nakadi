@@ -19,7 +19,11 @@
   .path {
     margin-bottom: 5px;
     padding-bottom: 5px;
-    border-bottom: 1px solid darken($color-lightgray, 5%)
+    border-bottom: 1px solid darken($color-lightgray, 5%);
+    white-space: nowrap;
+    a {
+      display: inline-block;
+    }
   }
 
   a {
@@ -28,6 +32,7 @@
     padding: 6px 10px;
     color: $color-font;
     transition: $default-transition;
+    border: none;
 
     &:hover {
       color: $color-primary;
@@ -38,4 +43,5 @@
       padding-left: 5px;
     }
   }
+
 }

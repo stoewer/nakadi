@@ -12,9 +12,9 @@ Nakadi is hosted on Github - [zalando/nakadi](https://github.com/zalando/nakadi/
 <a name="dev-building"></a>
 ## Building
 
-The project is built with [Gradle](http://gradle.org). 
+The project is built with [Gradle](https://gradle.org). 
 
-The `gradlew` [wrapper script](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) is available in the project's root and will bootstrap the right Gradle version if it's not already installed. 
+The `gradlew` [wrapper script](https://www.gradle.org/docs/current/userguide/gradle_wrapper.html) is available in the project's root and will bootstrap the right Gradle version if it's not already installed. 
 
 The gradle setup is fairly standard, the main dev tasks are:
 
@@ -47,6 +47,3 @@ There are a few build commands for running Docker -
 For working with an IDE, the `./gradlew eclipse` IDE task is available and you'll be able to import the `build.gradle` into Intellij IDEA directly.
 
 ![idea](./img/idea.png)
-
-
-{{ site.data | jsonify }}

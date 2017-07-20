@@ -7,7 +7,7 @@ $methods: (
 );
 
 @each $method, $color in $methods {
-  .method-#{$method}:after {
+  .method-#{$method}:before {
     content: attr(data-after);
     text-transform: uppercase;
     color: $color;

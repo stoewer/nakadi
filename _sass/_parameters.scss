@@ -1,11 +1,6 @@
 .parameters {
   width: 100%;
 
-  .required:after {
-    content: ' *';
-    color: red;
-  }
-
   th {
     text-align: left;
     font-weight: bold;
@@ -18,5 +13,10 @@
 
   td, th {
     padding: 10px;
+  }
+
+  .param-name {
+    white-space: nowrap;
+    width: 120px;
   }
 }

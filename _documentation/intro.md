@@ -11,7 +11,7 @@ The goal of Nakadi (ნაკადი means "stream" in Georgian) is to provide
 
 #### RESTfull 
 
-Abstract event delivery via a secured [RESTful API](./manual/api-spec-generated/paths). This allows microservices teams to maintain service boundaries, and not directly depend on any specific message broker technology. Access to the API can be managed and secured using OAuth scopes.
+Abstract event delivery via a secured [RESTful API](#nakadi-event-bus-api). This allows microservices teams to maintain service boundaries, and not directly depend on any specific message broker technology. Access to the API can be managed and secured using OAuth scopes.
 
 #### JSON Schema
 
@@ -29,7 +29,6 @@ Nakadi instances are stateless. They can be run on AWS with auto-scaling.
 
 Using Timelines it is easy to move the traffic to another cluster without moving the data and any service degradation. 
 
-Read more in [Nakadi manual](./manual/)
 
 ## Examples
 
@@ -38,7 +37,7 @@ Read more in [Nakadi manual](./manual/)
 An event type can be created by posting to the `event-types` resource.
 
 ```sh
-curl -v -XPOST http://localhost:8080/event-types -H "Content-type: application/json" -d '{
+curl -v -XPOST https://localhost:8080/event-types -H "Content-type: application/json" -d '{
   "name": "order.ORDER_RECEIVED",
   "owning_application": "order-service",
   "category": "undefined",
@@ -55,7 +54,7 @@ curl -v -XPOST http://localhost:8080/event-types -H "Content-type: application/j
 Events for an event type can be published by posting to its "events" collection:
 
 ```sh
-curl -v -XPOST http://localhost:8080/event-types/order.ORDER_RECEIVED/events -H "Content-type: application/json" -d '[
+curl -v -XPOST https://localhost:8080/event-types/order.ORDER_RECEIVED/events -H "Content-type: application/json" -d '[
   {
     "order_number": "24873243241",
     "metadata": {
@@ -80,7 +79,7 @@ HTTP/1.1 200 OK
 You can open a stream for an Event Type via the `events` sub-resource:
 
 ```sh
-curl -v http://localhost:8080/event-types/order.ORDER_RECEIVED/events 
+curl -v https://localhost:8080/event-types/order.ORDER_RECEIVED/events 
     
 
 HTTP/1.1 200 OK
@@ -89,8 +88,6 @@ HTTP/1.1 200 OK
 {"cursor":{"partition":"0","offset":"5"},"events":[{"order_number": "ORDER_002", "metadata": {"eid": "4bea74a4-eb01-11e5-9efa-1c6f65464fc6", "occurred_at": "2016-03-15T23:57:15+01:00"}}]}
 {"cursor":{"partition":"0","offset":"6"},"events":[{"order_number": "ORDER_003", "metadata": {"eid": "4cc6d2f0-eb01-11e5-b606-1c6f65464fc6", "occurred_at": "2016-03-15T23:58:15+01:00"}}]}
 ```
-
-Read more in [Nakadi manual](manual)
 
 ## Nakadi community
 

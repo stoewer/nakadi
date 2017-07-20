@@ -7,7 +7,7 @@ position: 2
 
 In this section we'll walk through running a Nakadi service on your machine.
 Once you have the service up and running, you can jump to
-[Using Nakadi](./using.html) to see how produce and consume messages.
+[Using Nakadi](#using_producing-events) to see how produce and consume messages.
 
 ## Quickstart
 
@@ -26,7 +26,7 @@ via the `gradlew` command:
 
 This will start a docker container for the Nakadi server and another container
 with its PostgreSQL, Kafka and Zookeeper dependencies. You can read more about
-the `gradlew` script in the [Building and Developing section](./developing.html)
+the `gradlew` script in the [Building and Developing section](#developing)
 
 ### Stopping a Server
 
@@ -41,7 +41,7 @@ To stop the running Nakadi:
 ### Notes
 
 If you're having trouble getting started, you might find an answer in the
-[Frequently Asked Questions (FAQ)](./faq.html) section of the documentation.
+[Frequently Asked Questions (FAQ)](#faq) section of the documentation.
 
 #### Ports
 

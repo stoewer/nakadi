@@ -23,76 +23,36 @@ layout: default
 {% assign allData = site.data %}
 
 {% for data in allData %}
+
     {% assign singleData = data[1] %}
-    {% for path in singleData.paths %}
-            {% for method in path[1] %}
-            <div class="doc">
-                <a id="{{ path[0] }}_{{ method[0] }}"></a>
-                <div class="info">
-                    <h2 class="title">
-                        <span class="method-{{ method[0] }}" data-after="{{ method[0] }}">
-                            {{ path[0] }}
-                        </span>
-                    </h2>
-                    <p class="summary">{{ method[1].summary }}</p>
-                    <p class="summary">{{ method[1].description }}</p>
-
-                    {% capture fileName %}{{ path[0] }}_{{ method[0] }}{% endcapture %}
-                    {% comment %}
-                        Todo: replace { and } dynamically
-                    {% endcomment %}
-                    {% assign fileNameStripped = fileName | replace: '/', '' | replace: '{id}', '_id' %}
-
-                    {% for collection in site.collections %}
-                    {% assign docs = collection.docs %}
-                        {% for doc in docs %}
-                            {% if doc.collection == "api" %}
-                                {% if doc.slug ==  fileNameStripped %}
-                                    {{ doc.content }}
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endfor %}
+    <div class="doc">
+        <a id="{{ data[0] }}"></a>
+        <div class="info">
+            <h1 class="title"><a href="#{{ data[0] }}">
+                {{singleData.info.title}} v{{singleData.info.version}}
+            </a></h1>
+            {{singleData.info.description|newline_to_br| markdownify}}
+            <hr/>
+            {% include yaml.html data=singleData.info.contact %}
+        </div>
+    </div>
 
 
-                    {% assign parameters = method[1].parameters %}
-                    {% include parameters.html data=parameters %}
-                </div>
-                {% include preview.html %}
-            </div>
+    <h1 class="title">Methods</h1>
+
+    {% assign paths = singleData.paths | sort %}
+    {% for path in paths %}
+        {% for method in path[1] %}
+            {% include endpoint.html path=path method=method %}
         {% endfor %}
     {% endfor %}
-    {% for definition in singleData.definitions %}
-            <div class="doc">
-                <a id="definition_{{ definition[0] }}"></a>
-                <div class="info">
-                    <h2 class="title">
-                            {{ definition[0] }}
-                    </h2>
-                    <p class="summary">{{ definition[1].summary }}</p>
-                    <p class="summary">{{ definition[1].description }}</p>
 
-                    {% capture fileName %}{{ definition[0] }}{% endcapture %}
-                    {% comment %}
-                        Todo: replace { and } dynamically
-                    {% endcomment %}
-                    {% assign fileNameStripped = fileName | replace: '/', '' | replace: '{id}', '_id' %}
+    <h1 class="title">Definitions</h1>
 
-                    {% for collection in site.collections %}
-                    {% assign docs = collection.docs %}
-                        {% for doc in docs %}
-                            {% if doc.collection == "api" %}
-                                {% if doc.slug ==  fileNameStripped %}
-                                    {{ doc.content }}
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endfor %}
-
-
-                    {% assign parameters = method[1].properties %}
-                    {% include parameters.html data=parameters %}
-                </div>
-            </div>
+    {% assign definitions = singleData.definitions | sort %}
+    {% for definition in definitions %}
+          {% include definition.html definition=definition %}
     {% endfor %}
 {% endfor %}
+
+
